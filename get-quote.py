@@ -1,21 +1,19 @@
-#import random
-import requests
+import random
 
 def primary():
   #   print("Keep it logically awesome.")
 
-# Make a GET request to the quote API
-  response = requests.get("https://api.quotable.io/random")
-
-# Check the status code of the response
-  if response.status_code == 200:
-    # If the request is successful, parse the JSON response
-    quote = response.json()
-    print(quote['content'])
-    print("- " + quote['author'])
-  else:
-    # If the request is not successful, print an error message
-    print("An error occurred:", response.status_code)
+  f = open("quotes.txt")
+  quotes = f.readlines()
+  f.close()
+  last = len(quotes) - 1
+  rnd = random.randint(0, last)
+  print(quotes[rnd])
 
 if __name__== "__main__":
   primary()
+
+
+
+
+
